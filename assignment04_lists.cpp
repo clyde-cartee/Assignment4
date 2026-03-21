@@ -1,7 +1,7 @@
 /*************************************************************************
 * Programming Assignment 4 for CSCI 271-001 Spring 2026
 *
-* Author: William Klement (REPLACE THIS WITH YOUR OWN NAME)
+* Author: Clyde Cartee
 * OS: Ubuntu Debian Linux 21.1
 * Compiler: g++
 * Date: March 9, 2026
@@ -10,6 +10,10 @@
 * This program implements the class Lists as linked lists of generic nodes 
 * The task is to implement the missing methods. 
 * Please see corresponding assignemnt questions
+*
+* you are NOT allowed to call addAt(index) in your code for any of your questions
+* you are NOT allowed to call removeAt(index) in your code for any of your questions
+*
 *************************************************************************/
 
 #include<iostream>
@@ -39,10 +43,9 @@ template <typename T> class Node{
     ~Node(){
       // call destructors for the rest of the list
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-      cout<<"    ~Node(): you need to write this method <-------------"<<endl;
+      if(next != nullptr){
+        delete next;
+      }
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -62,11 +65,11 @@ template <typename T> class List{
       // destroy the list by destroying the nodes
       ~List(){
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    ~List(): you need to write this method <-------------"<<endl;
+        if(head != nullptr){
+          delete head
+        }
 
+        head = nullptr;
         DN += 1;  // keep track of deallocations
       }
 
@@ -79,10 +82,21 @@ template <typename T> class List{
       // addLast(item) adds an element item of type T at the end of the list
       void addLast(T item){
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addLast(item): you need to write this method <-------------"<<endl;
+        
+        Node<T>* endNode = new Node<T>;
+        endNode -> element = item;
+        endNode -> next = nullptr;
+
+        if (this->head == nullptr) {
+          this->head = endNode;
+        } 
+
+        Node<T>* temp = this->head;
+        while(temp->next != nullptr){
+          temp = temp->next;
+        }
+
+        temp->next = endNode;
 
         // cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
