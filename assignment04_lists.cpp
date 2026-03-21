@@ -281,7 +281,7 @@ template <typename T> class List{
         }else{
 
         
-        Node* traversalPTR = this->head;
+        Node<T>* traversalPTR = this->head;
         
         for(int idx = 0; idx < index; idx++){
           traversalPTR = traversalPTR->next;

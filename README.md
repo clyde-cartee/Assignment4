@@ -21,10 +21,12 @@ classes, can you suggest a solution for any obvious performance issues you detec
 implementation?
 
 **1. adding a pointer similar to head for the tail would allow for less full list traversal**
+
 **2. simmilar to the last suggestion keeping a constant count of the size in a variable**
 
 # Question 10
 Please explain (briefly and clearly) why there were two calls for ~list() in the output above. 
 
 **This is because first, main calls for the ~list deconstructor.**
+
 **Next because list is initalized in main, when main terminates it calles the ~list deconstructor to handle deconstruction**
