@@ -91,7 +91,7 @@ template <typename T> class List{
         if (this->head == nullptr) {
           this->head = endNode;
         } 
-
+        else{
         //creates temp pointer to find end of list
         Node<T>* temp = this->head;
         while(temp->next != nullptr){
@@ -99,7 +99,7 @@ template <typename T> class List{
         }
         // sets last nodes next to endnode
         temp->next = endNode;
-
+        }
         cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
 
@@ -196,13 +196,29 @@ template <typename T> class List{
     
       // removeLast() deletes the last element and its node in the list
       void removeLast(){
+        if(this->head == nullptr){
+          cout << "The list is empty !" << endl;
+          return;
+        }
+        if (this->head->next == nullptr) {
+          delete this->head;
+          this->head = nullptr;
+          cout<<"last item removed"<<endl;
+          return;
+        } 
+        //will hold previous pointer value to remove the one in front of it
+        Node<T>* prev = nullptr;
+        //creates temp pointer to find end of list
+        Node<T>* del = this->head;
+        while(del->next != nullptr){
+          prev = del;
+          del = del->next;
+        }
+        // sets last nodes next to endnode
+        prev ->next = nullptr;
+        delete del;
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeLast(): you need to write this method <-------------"<<endl;
-
-          // cout<<"last item removed"<<endl; // your method MUST use this!
+        cout<<"last item removed"<<endl; // your method MUST use this!
       }
 
       // removeAt(index) deletes the element and its node found at 
@@ -241,12 +257,14 @@ template <typename T> class List{
       // removeFront() deletes the last element and its node in the list
       void removeFront(){
        
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeFront(): you need to write this method <-------------"<<endl;
+        if (this->head == nullptr) {
+          return; 
+        }
+        Node<T>* del = this->head;
+        this->head = this->head->next;
 
-          // cout<<"front item removed"<<endl; // your method MUST use this!
+        delete del;
+        cout<<"front item removed"<<endl; // your method MUST use this!
 
       }
 
@@ -254,12 +272,23 @@ template <typename T> class List{
       T getAt(int index){
         T res = -9999;        // initialize the results to invalid element
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    getAt(): you need to write this method <-------------"<<endl;
+        if(this->head == nullptr){
+          cout << "The list is empty !" << endl;
+          return res;
+        }else if (this->size() < index +1){
+          cout << "index out of bound !" << endl;
+          return res;         
+        }else{
 
+        
+        Node* traversalPTR = this->head;
+        
+        for(int idx = 0; idx < index; idx++){
+          traversalPTR = traversalPTR->next;
+        }
+        res = traversalPTR->element;
         return res;  // return the results -- YOU MUST USE THIS!!!!
+        }
       }
 };
 
