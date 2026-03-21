@@ -41,8 +41,7 @@ template <typename T> class Node{
     }
 
     ~Node(){
-      // call destructors for the rest of the list
-
+      //deconstructs this node next
       if(next != nullptr){
         delete next;
       }
@@ -64,12 +63,13 @@ template <typename T> class List{
       
       // destroy the list by destroying the nodes
       ~List(){
-
+        //recursive deconstruction that calls node deconstructor
         if(head != nullptr){
           delete head
         }
-
+        //makes head nullptr to clear memory and leave no reference to former memory
         head = nullptr;
+
         DN += 1;  // keep track of deallocations
       }
 
@@ -82,35 +82,39 @@ template <typename T> class List{
       // addLast(item) adds an element item of type T at the end of the list
       void addLast(T item){
 
-        
+        //creates new node with item T and sets next to null because it is at the end
         Node<T>* endNode = new Node<T>;
         endNode -> element = item;
         endNode -> next = nullptr;
 
+        //checks if list is empty so it doesnt crash
         if (this->head == nullptr) {
           this->head = endNode;
         } 
 
+        //creates temp pointer to find end of list
         Node<T>* temp = this->head;
         while(temp->next != nullptr){
           temp = temp->next;
         }
-
+        // sets last nodes next to endnode
         temp->next = endNode;
 
-        // cout<<"new node added at back!"<<endl; // your method MUST use this!
+        cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
 
       // addFront(item) creates and adds a new element node 
       // containing item at the front of the list
       void addFront(T item){
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addFront(item): you need to write this method <-------------"<<endl;
+        Node<T>* frontNode = new Node<T>;
+        frontNode ->element = item;
 
-        // cout<<"new node added at front !"<<endl; // your method MUST use this!
+        frontNode->next = this->head;
+
+        this-> head = frontNode;
+
+        cout<<"new node added at front !"<<endl; // your method MUST use this!
       }
 
       // addAt(index, item) creates and adds a new element node containing 
