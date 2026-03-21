@@ -65,7 +65,7 @@ template <typename T> class List{
       ~List(){
         //recursive deconstruction that calls node deconstructor
         if(head != nullptr){
-          delete head
+          delete head;
         }
         //makes head nullptr to clear memory and leave no reference to former memory
         head = nullptr;
