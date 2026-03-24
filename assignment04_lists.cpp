@@ -39,13 +39,9 @@ template <typename T> class Node{
       this->next = NULL;
       AN += 1;  // keep track of allocations
     }
-
+//original implimentation I created ~node was itself recursive and deleted all
     ~Node(){
-      //deconstructs this node next
-      if(next != nullptr){
-        delete next;
-      }
-
+      //destroys but counts, ~list handles the recursive delete
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
     }
@@ -62,14 +58,17 @@ template <typename T> class List{
       }
       
       // destroy the list by destroying the nodes
+      //had to change this because originally relied on recursive node destruction
       ~List(){
-        //recursive deconstruction that calls node deconstructor
-        if(head != nullptr){
-          delete head;
-        }
-        //makes head nullptr to clear memory and leave no reference to former memory
-        head = nullptr;
+        Node* curr = head;
 
+        while(curr != nullptr){
+          //same as our remove methods later and as we rememeber next before continuing
+          Node<T>* rememberNextPTR = curr->next;
+          delete curr;
+
+          curr = rememberNextPTR;
+        }
         DN += 1;  // keep track of deallocations
       }
 
