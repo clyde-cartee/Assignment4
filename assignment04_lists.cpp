@@ -39,9 +39,13 @@ template <typename T> class Node{
       this->next = NULL;
       AN += 1;  // keep track of allocations
     }
-//original implimentation I created ~node was itself recursive and deleted all
+
     ~Node(){
-      //destroys but counts, ~list handles the recursive delete
+      //deconstructs this node next
+      if(next != nullptr){
+        delete next;
+      }
+
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
     }
@@ -58,17 +62,14 @@ template <typename T> class List{
       }
       
       // destroy the list by destroying the nodes
-      //had to change this because originally relied on recursive node destruction
       ~List(){
-        Node<T>* curr = head;
-
-        while(curr != nullptr){
-          //same as our remove methods later and as we rememeber next before continuing
-          Node<T>* rememberNextPTR = curr->next;
-          delete curr;
-
-          curr = rememberNextPTR;
+        //recursive deconstruction that calls node deconstructor
+        if(head != nullptr){
+          delete head;
         }
+        //makes head nullptr to clear memory and leave no reference to former memory
+        head = nullptr;
+
         DN += 1;  // keep track of deallocations
       }
 
@@ -250,8 +251,9 @@ template <typename T> class List{
           
           Node<T>* pNode = temp->next; // hold on to that node temporarily 
           temp->next = pNode->next;    // relink around the removed node
-          pNode->next = NULL;          // disconnect that node form the list
-          pNode->~Node();              // destroy the node
+          //This was causing me issues so I changed it
+          pNode->next = nullptr;          // disconnect that node form the list
+          delete pNode;              // destroy the node
           cout<<"item removed at index "<<index<<endl;
         }
       }
@@ -279,11 +281,10 @@ template <typename T> class List{
         //does valid entry checks
         if(this->head == nullptr){
           cout << "The list is empty !" << endl;
-          //wasnt sure how to make sure -9999 wouldnt crash this sometimes if type was off so found out this default trick
-          return T{};
+          return res;
         }else if (listLength < index +1 || index < 0){
           cout << "index out of bound !" << endl;
-          return T{};         
+          return res;         
         }else{
 
         //creates a traversal pointer
@@ -292,7 +293,7 @@ template <typename T> class List{
         for(int idx = 0; idx < index; idx++){
           traversalPTR = traversalPTR->next;
         }
-        //sets res to the element
+        //sets res to return element
         res = traversalPTR->element;
         return res;  // return the results -- YOU MUST USE THIS!!!!
         }
