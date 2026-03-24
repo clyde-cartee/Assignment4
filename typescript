@@ -1,0 +1,217 @@
+Script started on 2026-03-24 00:05:54-04:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="80" LINES="24"]
+[?2004h]0;carteec2@thur114-hp1: ~/csci271/Assignment4[01;32mcarteec2@thur114-hp1[00m:[01;34m~/csci271/Assignment4[00m$ make
+[?2004lg++ -o a4.bin assignment04_lists.cpp
+[?2004h]0;carteec2@thur114-hp1: ~/csci271/Assignment4[01;32mcarteec2@thur114-hp1[00m:[01;34m~/csci271/Assignment4[00m$ ./a4.bin
+[?2004l____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+1
+enter item to insert:
+
+1
+new node added at back!
+CPU time used: 2 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+2
+enter item to insert:
+2
+new node added at front !
+CPU time used: 21 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+3
+enter item to insert:
+0
+enter index:
+0
+new node added at index 0 !
+CPU time used: 27 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+4
+____________List of 3 items________________
+[ 0 , 2 , 1] 
+
+CPU time used: 14 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+4 5
+enter index:
+2
+item at index 2is: 1
+CPU time used: 18 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+6
+end item removed
+CPU time used: 14 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+4
+____________List of 2 items________________
+[ 0 , 2] 
+
+CPU time used: 16 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+7
+front item removed
+CPU time used: 14 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+4
+____________List of 1 items________________
+[ 2] 
+
+CPU time used: 15 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+1
+enter item to insert:
+1
+new node added at back!
+CPU time used: 2 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+1
+enter item to insert:
+1
+new node added at back!
+CPU time used: 2 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+8
+enter index:
+0
+front item removed
+item removed at index 0
+CPU time used: 21 ms
+____________Main Menu_____________________
+select option :
+1: insert back
+2: insert front
+3: insert at index
+4: display items
+5: get item at index
+6: delete back
+7: delete front
+8: delete at index
+9: exit
+9
+CPU time used: 11 ms
+..........................................
+........   CONGRATULATIONS on memory well managed! .... :^) !!!!
+Allocation Calls: 6
+DeAllocation Calls: 6
+[?2004h]0;carteec2@thur114-hp1: ~/csci271/Assignment4[01;32mcarteec2@thur114-hp1[00m:[01;34m~/csci271/Assignment4[00m$ exit
+[?2004lexit
+
+Script done on 2026-03-24 00:09:04-04:00 [COMMAND_EXIT_CODE="0"]
