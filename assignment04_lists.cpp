@@ -84,12 +84,12 @@ template <typename T> class List{
 
         //creates new node with item T and sets next to null because it is at the end
         Node<T>* endNode = new Node<T>;
-        endNode -> element = item;
-        endNode -> next = nullptr;
+        endNode -> element = item;//adds item to element variable
+        endNode -> next = nullptr;//makes this nodes next null
 
         //checks if list is empty so it doesnt crash
         if (this->head == nullptr) {
-          this->head = endNode;
+          this->head = endNode;//sets head node as current
         } 
         else{
         //creates temp pointer to find end of list
@@ -106,12 +106,13 @@ template <typename T> class List{
       // addFront(item) creates and adds a new element node 
       // containing item at the front of the list
       void addFront(T item){
-
+        //initializes node and creates pointer
         Node<T>* frontNode = new Node<T>;
         frontNode ->element = item;
 
+        //sets next to the head
         frontNode->next = this->head;
-
+        //switches places with head node to be first
         this-> head = frontNode;
 
         cout<<"new node added at front !"<<endl; // your method MUST use this!
@@ -196,10 +197,12 @@ template <typename T> class List{
     
       // removeLast() deletes the last element and its node in the list
       void removeLast(){
+        //if this head is null then empty
         if(this->head == nullptr){
           cout << "The list is empty !" << endl;
           return;
         }
+        //this is if only one node. checks heads next and if null then removes
         if (this->head->next == nullptr) {
           delete this->head;
           this->head = nullptr;
@@ -218,7 +221,7 @@ template <typename T> class List{
         prev ->next = nullptr;
         delete del;
 
-        cout<<"last item removed"<<endl; // your method MUST use this!
+        cout<<"end item removed"<<endl; // your method MUST use this!
       }
 
       // removeAt(index) deletes the element and its node found at 
@@ -256,13 +259,14 @@ template <typename T> class List{
 
       // removeFront() deletes the last element and its node in the list
       void removeFront(){
-       
+       //checks if it has an element
         if (this->head == nullptr) {
+          cout << "Nothing to remove" << endl;
           return; 
         }
+        //sets del to this head before then this head to its next. This diconecting them to then delete
         Node<T>* del = this->head;
         this->head = this->head->next;
-
         delete del;
         cout<<"front item removed"<<endl; // your method MUST use this!
 
@@ -271,21 +275,25 @@ template <typename T> class List{
       // getAt(int index) returns the element found at position index in the list
       T getAt(int index){
         T res = -9999;        // initialize the results to invalid element
-
+        //used this so it wouldnt have to search as many times for comparison
+        int listLength = this->size();
+        //does valid entry checks
         if(this->head == nullptr){
           cout << "The list is empty !" << endl;
-          return res;
-        }else if (this->size() < index +1){
+          //wasnt sure how to make sure -9999 wouldnt crash this sometimes if type was off so found out this default trick
+          return T{};
+        }else if (listLength < index +1 || index < 0){
           cout << "index out of bound !" << endl;
-          return res;         
+          return T{};         
         }else{
 
-        
+        //creates a traversal pointer
         Node<T>* traversalPTR = this->head;
-        
+        //loop to find position of item
         for(int idx = 0; idx < index; idx++){
           traversalPTR = traversalPTR->next;
         }
+        //sets res to the element
         res = traversalPTR->element;
         return res;  // return the results -- YOU MUST USE THIS!!!!
         }
