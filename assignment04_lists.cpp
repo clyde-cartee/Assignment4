@@ -204,10 +204,12 @@ template <typename T> class List{
         }
         //this is if only one node. checks heads next and if null then removes
         if (this->head->next == nullptr) {
-          delete this->head;
+          Node<T>* del = this->head;
           this->head = nullptr;
-          cout<<"last item removed"<<endl;
-          return;
+          del->next = nullptr;
+          delete del;
+          cout << "last item removed" << endl;
+        return;
         } 
         //will hold previous pointer value to remove the one in front of it
         Node<T>* prev = nullptr;
@@ -219,6 +221,7 @@ template <typename T> class List{
         }
         // sets last nodes next to endnode
         prev ->next = nullptr;
+        del->next = nullptr;
         delete del;
 
         cout<<"end item removed"<<endl; // your method MUST use this!
@@ -268,6 +271,7 @@ template <typename T> class List{
         //sets del to this head before then this head to its next. This diconecting them to then delete
         Node<T>* del = this->head;
         this->head = this->head->next;
+        del->next = nullptr;
         delete del;
         cout<<"front item removed"<<endl; // your method MUST use this!
 
