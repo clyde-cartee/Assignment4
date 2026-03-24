@@ -60,7 +60,7 @@ template <typename T> class List{
       // destroy the list by destroying the nodes
       //had to change this because originally relied on recursive node destruction
       ~List(){
-        Node* curr = head;
+        Node<T>* curr = head;
 
         while(curr != nullptr){
           //same as our remove methods later and as we rememeber next before continuing
